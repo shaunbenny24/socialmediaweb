@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'Community',
     'Content',
     'frontend',
-    'profile',
+    'Profile',
     'Utility',
 
 ]
