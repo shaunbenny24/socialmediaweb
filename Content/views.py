@@ -1,14 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
-# content/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
 
-# content/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status

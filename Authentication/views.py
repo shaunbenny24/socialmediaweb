@@ -1,11 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
-# authentication/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+
+import Authentication
 from .serializers import UserSerializer, TokenSerializer
 
 class UserRegistrationAPIView(APIView):
@@ -22,7 +21,7 @@ class UserLoginAPIView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            user = authenticate(username=request.data['username'], password=request.data['password'])
+            user = Authentication(username=request.data['username'], password=request.data['password'])
             if user:
                 token, created = Token.objects.get_or_create(user=user)
                 return Response({'token': token.key}, status=status.HTTP_200_OK)
